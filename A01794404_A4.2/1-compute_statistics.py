@@ -14,7 +14,6 @@ import math
 
 file_path = "/StatisticsInput.txt"
 
-
 def process_file(file_path):
     try:
         with open(file_path, 'r') as file:
