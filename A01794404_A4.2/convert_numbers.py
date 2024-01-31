@@ -32,9 +32,9 @@ def convert_numbers_in_file(file_path: str, output_file, error_list) -> None:
             output_file.write(f"\nConverting numbers in file: {file_path}\n")
             for line in file:
                 try:
-                    num = float(line.strip())
-                    binary_representation = bin(int(num))[2:]
-                    hexadecimal_representation = hex(int(num))[2:]
+                    num = int(line.strip())
+                    binary_representation = bin(num)
+                    hexadecimal_representation = hex(num)
                     original = f"Original: {num}"
                     binary = f"Binary: {binary_representation}"
                     hexadecimal = f"Hexadecimal: {hexadecimal_representation}"
