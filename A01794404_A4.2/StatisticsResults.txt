@@ -1,0 +1,6 @@
+Sum: 1000000.0
+Average: 1000.0
+Minimum: 1.0
+Maximum: 1999.0
+Standard Deviation: 577.349980514419
+Elapsed Time: 0.027103424072265625 seconds
