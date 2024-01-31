@@ -33,8 +33,8 @@ def convert_numbers_in_file(file_path: str, output_file, error_list) -> None:
             for line in file:
                 try:
                     num = int(line.strip())
-                    binary_representation = bin(num)
-                    hexadecimal_representation = hex(num)
+                    binary_representation = format(num,'b')
+                    hexadecimal_representation = format(num, '02X')
                     original = f"Original: {num}"
                     binary = f"Binary: {binary_representation}"
                     hexadecimal = f"Hexadecimal: {hexadecimal_representation}"
