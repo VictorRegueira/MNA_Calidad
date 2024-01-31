@@ -15,6 +15,7 @@ from tabulate import tabulate
 
 FOLDER_PATH = "P1"
 FILE_EXTENSION = ".txt"
+OUTPUT_FILE_NAME = "StatisticsResults.txt"
 
 
 def process_file(file_path: str) -> list:
@@ -86,19 +87,43 @@ def process_files_in_folder(folder_path: str) -> None:
         if results:
             results_table.append([file_name] + results)
 
-    # Displaying results in a single table
-    headers = ["File"] + ["Count", "Non-Zero Count", "Mean", "Median",
-                          "Mode", "Variance", "Std Deviation", "Elapsed Time"]
+    return results_table
+
+def display_results(results_table: list) -> None:
+    """
+    Display the computed statistics in a table.
+
+    :param results_table: List of lists containing statistics
+    :return: None
+    """
+    headers = ["File", "Count", "Non-Zero Count", "Mean", "Median",
+               "Mode", "Variance", "Std Deviation", "Elapsed Time"]
     print(tabulate(results_table, headers=headers, tablefmt="pretty"))
 
+def write_results_to_file(results_table: list) -> None:
+    """
+    Write the computed statistics to an output file.
+
+    :param results_table: List of lists containing statistics
+    :return: None
+    """
+    with open(OUTPUT_FILE_NAME, 'w', encoding='utf-8') as output_file:
+        headers = ["File"] + ["Count", "Non-Zero Count", "Mean", "Median",
+                              "Mode", "Variance", "Std Deviation", "Elapsed Time"]
+        output_file.write(tabulate(results_table, headers=headers, tablefmt="pretty"))
 
 if __name__ == "__main__":
     if not os.path.isdir(FOLDER_PATH):
         print("Invalid folder path. Exiting.")
     else:
         total_start_time = time.time()
-        process_files_in_folder(FOLDER_PATH)
+        results_table_doc = process_files_in_folder(FOLDER_PATH)
         total_end_time = time.time()
-        total_time = total_end_time - total_start_time
-        print('Total time: ', total_time)
+
+        if results_table_doc:
+            display_results(results_table_doc)
+            write_results_to_file(results_table_doc)
+            print(f"Results written to {OUTPUT_FILE_NAME}")
+            total_time = total_end_time - total_start_time
+            print('Total time: ', total_time)
         
