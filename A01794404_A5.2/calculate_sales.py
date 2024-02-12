@@ -1,3 +1,26 @@
+"""
+SalesCalculator Class:
+
+A class to calculate total sales based on product lists and sales data.
+
+Attributes:
+    warnings (dict): A dictionary to store warnings during calculation.
+    file_names (list): A list to store the names of processed files.
+
+Methods:
+    __init__(): Initializes SalesCalculator with empty warnings and file_names lists.
+    read_file(path: str) -> list: Reads data from a JSON file.
+    read_files_in_pair() -> list: Reads pairs of files from command line 
+    arguments and returns their data.
+    find_product(product_name: str, product_list: list) -> 
+    dict: Finds a product by its name in the product list.
+    calculate_sales(product_list: list, sales: list, file_name: str) -> 
+    float: Calculates total sales based on product list and sales data.
+    write_to_file(results: str) -> None: Writes results to a file named SalesResults.txt.
+    calculate(): Calculates total sales from input files and writes results to a file.
+"""
+
+
 import json
 import sys
 import time
@@ -37,8 +60,8 @@ class SalesCalculator:
         for i in range(0, len(sys.argv)-1, 2):
             product_list_file_name, sales_file_name = sys.argv[i+1:i+3]
             if 'ProductList' in sales_file_name:
-                product_list_file_name, sales_file_name = sales_file_name,
-                product_list_file_name
+                product_list_file_name = sales_file_name
+                sales_file_name = product_list_file_name
             product_list = self.read_file(product_list_file_name)
             sales = self.read_file(sales_file_name)
             self.file_names.append({'products': product_list_file_name,
