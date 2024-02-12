@@ -8,28 +8,31 @@ Attributes:
     file_names (list): A list to store the names of processed files.
 
 Methods:
-    __init__(): Initializes SalesCalculator with empty warnings and file_names lists.
+    __init__(): Initializes SalesCalculator with
+    empty warnings and file_names lists.
     read_file(path: str) -> list: Reads data from a JSON file.
-    read_files_in_pair() -> list: Reads pairs of files from command line 
+    read_files_in_pair() -> list: Reads pairs of files from command line
     arguments and returns their data.
-    find_product(product_name: str, product_list: list) -> 
+    find_product(product_name: str, product_list: list) ->
     dict: Finds a product by its name in the product list.
-    calculate_sales(product_list: list, sales: list, file_name: str) -> 
+    calculate_sales(product_list: list, sales: list, file_name: str) ->
     float: Calculates total sales based on product list and sales data.
-    write_to_file(results: str) -> None: Writes results to a file named SalesResults.txt.
-    calculate(): Calculates total sales from input files and writes results to a file.
+    write_to_file(results: str) -> None: Writes results
+    to a file named SalesResults.txt.
+    calculate(): Calculates total sales from input files
+    and writes results to a file.
 """
-
-
 import json
 import sys
 import time
 
-class SalesCalculator:
-    """A class to calculate total sales based on product lists and sales data."""
 
+class SalesCalculator:
+    """A class to calculate total sales
+    based on product lists and sales data."""
     def __init__(self):
-        """Initialize SalesCalculator with empty warnings and file_names lists."""
+        """Initialize SalesCalculator with
+        empty warnings and file_names lists."""
         self.warnings = {}
         self.file_names = []
 
@@ -51,7 +54,8 @@ class SalesCalculator:
         return data
 
     def read_files_in_pair(self) -> list:
-        """Read pairs of files from command line arguments and return their data.
+        """Read pairs of files from command
+        line arguments and return their data.
 
         Returns:
             list: A list containing pairs of product lists and sales data.
@@ -117,7 +121,8 @@ class SalesCalculator:
             f.write(results)
 
     def calculate(self):
-        """Calculate total sales from input files and write results to a file."""
+        """Calculate total sales from input
+        files and write results to a file."""
         start_time = time.time()
         if (len(sys.argv) - 1) % 2 != 0:
             print('Error: You must provide the file paths in pairs.')
@@ -133,7 +138,8 @@ class SalesCalculator:
             output += f"""- Total sales in {self.file_names[i]
             ["sales"]}:{total: ,.2f}\n"""
             if self.warnings[product_list_file_name]:
-                output += f'\nWarnings: Products not found in list {product_list_file_name}:\n\n'
+                output += f"""\nWarnings: Products not found in list
+                {product_list_file_name}:\n\n"""
                 output += '\n'.join(self.warnings[product_list_file_name])
 
         end_time = time.time()
