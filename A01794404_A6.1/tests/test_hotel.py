@@ -13,13 +13,17 @@ Methods:
 import unittest
 from src.hotel.hotel import Hotel
 
+
 class TestHotel(unittest.TestCase):
     """
     Unit tests for the Hotel class.
 
-    This test case class is responsible for testing the behavior of the Hotel class.
-    It includes tests for the to_dict and from_dict methods, ensuring correct serialization
-    and deserialization of Hotel objects. It also includes tests for handling edge cases
+    This test case class is responsible for
+    testing the behavior of the Hotel class.
+    It includes tests for the to_dict and from_dict
+    methods, ensuring correct serialization
+    and deserialization of Hotel objects. It also
+    includes tests for handling edge cases
     such as empty data and missing keys in the input dictionary.
     """
 

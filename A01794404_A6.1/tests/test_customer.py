@@ -10,7 +10,9 @@ Methods:
 import unittest
 from src.customer.customer import Customer
 
+
 class TestCustomer(unittest.TestCase):
+
     """Test case for the Customer class."""
 
     def setUp(self):
@@ -48,4 +50,3 @@ class TestCustomer(unittest.TestCase):
             self.assertIn('"customer_id": 1', data)
             self.assertIn('"name": "John Doe"', data)
             self.assertIn('"email": "john@example.com"', data)
-            
