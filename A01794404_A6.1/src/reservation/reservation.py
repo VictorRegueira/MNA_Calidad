@@ -15,4 +15,5 @@ class Reservation:
 
     @staticmethod
     def from_dict(data):
-        return Reservation(data["reservation_id"], data["customer_id"], data["hotel_id"])
+        return (Reservation(data["reservation_id"],
+                data["customer_id"], data["hotel_id"]))

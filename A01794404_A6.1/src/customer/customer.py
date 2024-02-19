@@ -1,5 +1,6 @@
 """
-This module defines a Customer class representing a customer in a Customer Management System.
+This module defines a Customer class representing
+a customer in a Customer Management System.
 
 Attributes:
     customer_id (int): The unique identifier for the customer.
@@ -15,6 +16,7 @@ Methods:
 
 
 import json
+
 
 class Customer:
     """Represents a customer in a Customer Management System.
@@ -67,8 +69,8 @@ class Customer:
 
         Args:
             customers (list): A list of Customer objects.
-            filename (str, optional): The filename to save the data. Defaults to 'customers.json'.
+            filename (str, optional): The filename to
+            save the data. Defaults to 'customers.json'.
         """
         with open(filename, 'w', encoding='utf-8') as file:
             json.dump([customer.to_dict() for customer in customers], file)
-            
