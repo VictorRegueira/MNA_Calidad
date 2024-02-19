@@ -1,11 +1,27 @@
+"""
+Unit tests for the Reservation class.
+
+This test case class is responsible for testing the behavior of the Reservation class.
+It includes tests for the to_dict and from_dict methods, ensuring correct serialization
+and deserialization of Reservation objects.
+"""
 import unittest
 from src.reservation.reservation import Reservation
 
 class TestReservation(unittest.TestCase):
     def setUp(self):
+        """
+        Set up a Reservation instance with default values for testing.
+        """
         self.reservation = Reservation(1, 1, 1)
 
     def test_to_dict(self):
+        """
+        Test the to_dict method of the Reservation class.
+
+        This method tests whether the to_dict method returns a dictionary
+        with the expected keys and values representing the reservation.
+        """
         expected_dict = {
             "reservation_id": 1,
             "customer_id": 1,
@@ -14,6 +30,12 @@ class TestReservation(unittest.TestCase):
         self.assertEqual(self.reservation.to_dict(), expected_dict)
 
     def test_from_dict(self):
+        """
+        Test the from_dict method of the Reservation class.
+
+        This method tests whether the from_dict method correctly creates
+        a Reservation instance from a dictionary containing reservation data.
+        """
         data = {
             "reservation_id": 1,
             "customer_id": 1,
